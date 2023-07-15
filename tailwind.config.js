@@ -10,6 +10,8 @@ module.exports = {
       "background-page": "#151515",
       "input-background": "#4A4C57",
       "authbutton-background": "#D10F6D",
+      "table-background": "#292F47",
+      "border-separator": "#2D3142",
     },
     extend: {
       backgroundImage: {
