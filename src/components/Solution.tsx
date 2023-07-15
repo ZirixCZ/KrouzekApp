@@ -9,7 +9,7 @@ const Solution = (props: SolutionInterface) => {
         return (
           <div>
             <p className="font-semibold pb-7">{section.title}</p>
-            <div className="w-60 h-fit flex flex-row justify-between items-center">
+            <div className="w-27rem h-fit flex flex-row justify-between items-center">
               <SolutionTable rows={section.submissions} />
             </div>
           </div>

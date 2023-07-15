@@ -1,7 +1,6 @@
 import { SubmissionInterface } from "@/types/solutions";
 
 const SolutionTable = (props: { rows: SubmissionInterface[] }) => {
-  console.log(props.rows);
   return (
     <div className="w-full h-full bg-table-background rounded-lg mb-14">
       <table className="table w-full h-full">
