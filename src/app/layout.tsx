@@ -17,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <div className="w-screen h-screen bg-background-page">{children}</div>
+        <div className="w-screen h-screen bg-background-page p-36">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 const Topics = () => {
   return (
-    <div className="container">
+    <div className="w-full h-full">
       <h1>Topics</h1>
     </div>
   );
