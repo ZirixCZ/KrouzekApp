@@ -72,7 +72,7 @@ const Topics = () => {
   ];
 
   return (
-    <div className="w-full h-full flex justify-center">
+    <div className="w-full h-full flex justify-center align-center">
       <div className="w-32rem h-fit ">
         <Table title="Topics" headings={headings} data={data} />
       </div>
