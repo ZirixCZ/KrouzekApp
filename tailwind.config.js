@@ -12,6 +12,7 @@ module.exports = {
       "authbutton-background": "#D10F6D",
       "table-background": "#292F47",
       "border-separator": "#979797",
+      "sidebar-background": "#1A1A1A",
     },
     extend: {
       backgroundImage: {
