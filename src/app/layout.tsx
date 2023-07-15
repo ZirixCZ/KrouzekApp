@@ -68,7 +68,9 @@ export default function RootLayout({
                       ))}
                   </div>
                   <div className="flex flex-col justify-start items-center gap-6">
-                    <p className="font-medium text-2xl">Solutions</p>
+                    <Link href="/solutions" className="font-medium text-2xl">
+                      Solutions
+                    </Link>
                     <Separator width={140} />
                     {/* TODO change this depending on route */}
                     <p className="text-sm font-normal">The use of calloc</p>
