@@ -23,14 +23,14 @@ const Topic = ({ params }: { params: { slug: string } }) => {
 
   return (
     <div className="flex flex-col justify-start items-center w-full h-full gap-48">
-      <div className="w-27rem flex flex-col items-center gap-14">
+      <div className="sm:w-27rem flex flex-col sm:items-center gap-14">
         <h1 className="text-4xl font-bold">{data.title.toUpperCase()}</h1>
         <p
           dangerouslySetInnerHTML={{ __html: data.description }}
           className="text-sm font-normal leading-6"
         ></p>
       </div>
-      <div className="overflow-y-scroll w-full flex justify-center">
+      <div className="overflow-y-scroll w-full flex sm:justify-center">
         <div className="w-27rem">
           {sections.map((section) => (
             <Section title={section.title} description={section.description} />
