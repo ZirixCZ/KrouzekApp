@@ -1,4 +1,4 @@
-import Section from "../../../../components/Section/Section";
+import Section from "../../../components/Section/Section";
 
 const Topic = ({ params }: { params: { slug: string } }) => {
   // TODO: Fetch necessary data for the topic using params.slug
