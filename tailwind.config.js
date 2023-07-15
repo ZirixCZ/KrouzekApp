@@ -13,6 +13,8 @@ module.exports = {
       "table-background": "#292F47",
       "border-separator": "#979797",
       "sidebar-background": "#1A1A1A",
+      "upload-button-main": "#212121",
+      "upload-button-section": "#2F2F2F",
     },
     extend: {
       backgroundImage: {
@@ -22,6 +24,7 @@ module.exports = {
       },
       spacing: {
         "2px": "2px",
+        "27rem": "27rem",
         "32rem": "32rem",
       },
     },
