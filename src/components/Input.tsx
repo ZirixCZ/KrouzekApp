@@ -13,6 +13,7 @@ const Input = ({ handleChange, value }: InputProps) => {
         onChange={handleChange}
         value={value}
         type="text"
+        autoComplete="off"
         className="bg-input-background rounded-md h-11 w-80 px-4 outline-none"
       />
     </div>
