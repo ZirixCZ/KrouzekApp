@@ -11,13 +11,17 @@ module.exports = {
       "input-background": "#4A4C57",
       "authbutton-background": "#D10F6D",
       "table-background": "#292F47",
-      "border-separator": "#2D3142",
+      "border-separator": "#979797",
     },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      spacing: {
+        "2px": "2px",
+        "32rem": "32rem",
       },
     },
   },

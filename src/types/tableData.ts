@@ -1,11 +1,13 @@
+import React from "react";
+
 export interface tableData {
   name: string;
   actions: rowAction[];
 }
 
 export interface rowAction {
-  src: string;
-  href: string;
+  children: React.ReactNode;
+  query: string;
 }
 
 export interface headingType {

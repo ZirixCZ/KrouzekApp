@@ -1,21 +1,60 @@
+"use client";
+
 import Table from "@/components/Table";
+import Arrow from "@/components/Arrow";
+import Edit from "@/components/Edit";
+import Delete from "@/components/Delete";
 
 const Topics = () => {
   const data = [
     {
-      name: "Topic 1",
+      name: "Printing",
       actions: [
         {
-          href: "/arrow",
-          src: "/img/arrow.svg",
+          query: "/",
+          children: <Arrow fill="#fff" width={30} height={30} />,
         },
         {
-          href: "/edit",
-          src: "/img/edit.svg",
+          query: "/edit",
+          children: <Edit fill="#fff" width={30} height={25} />,
         },
         {
-          href: "/",
-          src: "/img/delete.svg",
+          query: "/delete",
+          children: <Delete fill="#fff" width={30} height={25} />,
+        },
+      ],
+    },
+    {
+      name: "Memory allocation",
+      actions: [
+        {
+          query: "/arrow",
+          children: <Arrow fill="#fff" width={30} height={30} />,
+        },
+        {
+          query: "/edit",
+          children: <Edit fill="#fff" width={30} height={25} />,
+        },
+        {
+          query: "/",
+          children: <Delete fill="#fff" width={30} height={25} />,
+        },
+      ],
+    },
+    {
+      name: "Pointer logic",
+      actions: [
+        {
+          query: "/arrow",
+          children: <Arrow fill="#fff" width={30} height={30} />,
+        },
+        {
+          query: "/edit",
+          children: <Edit fill="#fff" width={30} height={25} />,
+        },
+        {
+          query: "/",
+          children: <Delete fill="#fff" width={30} height={25} />,
         },
       ],
     },
@@ -23,7 +62,7 @@ const Topics = () => {
 
   const headings = [
     {
-      name: "TOPICS",
+      name: "TOPIC",
       width: "3/4",
     },
     {
@@ -31,9 +70,10 @@ const Topics = () => {
       width: "1/4",
     },
   ];
+
   return (
-    <div className="w-full h-full">
-      <div className="w-96 h-64">
+    <div className="w-full h-full flex justify-center">
+      <div className="w-32rem h-fit ">
         <Table title="Topics" headings={headings} data={data} />
       </div>
     </div>
