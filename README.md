@@ -1,3 +1,19 @@
+# Student homework manager
+A web application that enables students to preview discussed topics, homework, and their solutions. The application is built using Next.js and Firebase.
+
+##  Wireframe
+### Student Authentication
+![Login - Code](https://github.com/ZirixCZ/KrouzekApp/assets/49836430/00c00459-8de0-4448-9420-a1794dcfd8c2)
+### Topic Preview
+![Overview - student](https://github.com/ZirixCZ/KrouzekApp/assets/49836430/71c4ff61-38b3-4484-b697-a53e8ecb0d63)
+### Topic Information & Homework Upload
+![Topic - student](https://github.com/ZirixCZ/KrouzekApp/assets/49836430/e157a575-7062-4343-8b95-46367fb3b2c8)
+### Topic Solutions
+![Solutions](https://github.com/ZirixCZ/KrouzekApp/assets/49836430/95eda7bf-1a7d-46c5-97a0-adc6bca3b2d5)
+### Topic Solution Code Preview
+![Solutions - Opened](https://github.com/ZirixCZ/KrouzekApp/assets/49836430/1603c1c2-4b3c-4f98-b917-111aa216c1b0)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
