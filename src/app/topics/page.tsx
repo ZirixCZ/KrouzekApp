@@ -1,12 +1,21 @@
 "use client";
 
+import { ReactElement } from "react";
 import Table from "@/components/Table";
 import Arrow from "@/components/Arrow";
 import Edit from "@/components/Edit";
 import Delete from "@/components/Delete";
+import { headings } from "@/constants/topicsData";
 
 const Topics = () => {
-  const data = [
+  interface DataItem {
+    name: string;
+    actions: {
+      query: string;
+      children: ReactElement;
+    }[];
+  }
+  const data: DataItem[] = [
     {
       name: "Printing",
       actions: [
@@ -57,17 +66,6 @@ const Topics = () => {
           children: <Delete fill="#fff" width={30} height={25} />,
         },
       ],
-    },
-  ];
-
-  const headings = [
-    {
-      name: "TOPIC",
-      width: "3/4",
-    },
-    {
-      name: "ACTION",
-      width: "1/4",
     },
   ];
 
