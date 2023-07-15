@@ -1,6 +1,9 @@
 import { SubmissionInterface } from "@/types/solutions";
 
-const SolutionTable = (props: { rows: SubmissionInterface[] }) => {
+const SolutionTable = (props: {
+  rows: SubmissionInterface[];
+  handleOpen: () => void;
+}) => {
   return (
     <div className="w-full h-full bg-table-background rounded-lg mb-14">
       <table className="table w-full h-full">
@@ -20,7 +23,9 @@ const SolutionTable = (props: { rows: SubmissionInterface[] }) => {
                   {item.date}
                 </td>
                 <td className="table-cell w-1/4 text-sm font-normal px-4">
-                  <u>Open</u>
+                  <a onClick={props.handleOpen} className="cursor-pointer">
+                    <u>Open</u>
+                  </a>
                 </td>
               </tr>
             ))}
