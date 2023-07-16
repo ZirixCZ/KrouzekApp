@@ -15,6 +15,7 @@ module.exports = {
       "sidebar-background": "#1A1A1A",
       "upload-button-main": "#212121",
       "upload-button-section": "#2F2F2F",
+      "syntax-background": "#222222",
     },
     extend: {
       backgroundImage: {

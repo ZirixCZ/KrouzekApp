@@ -1,4 +1,5 @@
 "use client";
+
 import "./globals.css";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -7,6 +8,8 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Separator from "@/components/Separator";
 import parseURL from "@/utils/parseURL";
+import Hambuger from "@/components/Hamburger";
+import SidebarItems from "@/components/SidebarItems";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -18,10 +21,12 @@ export default function RootLayout({
   const [routeHistory, setRouteHistory] = useState<
     Array<{ name: string; pathname: string }> | undefined
   >();
+  const [hambugerOpen, setHambugerOpen] = useState(false);
   const pathname = usePathname();
   const showSidebar = pathname !== "/auth" && pathname !== "/";
 
   useEffect(() => {
+    setHambugerOpen(false);
     const name = parseURL(pathname, "topics");
     if (!name) return;
 
@@ -51,36 +56,25 @@ export default function RootLayout({
       <body className={montserrat.className}>
         <div className="w-screen h-screen bg-background-page flex">
           {showSidebar && (
-            <div className="w-96 lg:w-60 h-full bg-sidebar-background pt-32 hidden md:inline">
-              <div className="sticky">
-                <div className="w-full h-full flex flex-col justify-start items-center gap-24">
+            <>
+              <div className="w-96 lg:w-60 h-full bg-sidebar-background pt-32 hidden lg:inline">
+                <SidebarItems routeHistory={routeHistory} />
+              </div>
+              <div className="inline lg:hidden absolute right-4 top-4 z-20">
+                <a onClick={() => setHambugerOpen(!hambugerOpen)}>
+                  <Hambuger />
+                </a>
+              </div>
+              {hambugerOpen && (
+                <div className="w-screen h-screen bg-sidebar-background z-10 pt-32 lg:hidden absolute">
                   <div className="flex flex-col justify-start items-center gap-6">
-                    <Link href="/topics">
-                      <p className="font-medium text-2xl">Topics</p>
-                    </Link>
-                    <Separator width={140} />
-                    {/* TODO change this depending on route */}
-                    {routeHistory &&
-                      routeHistory.map(({ name, pathname }) => (
-                        <Link href={pathname} className="text-sm font-normal">
-                          {name}
-                        </Link>
-                      ))}
-                  </div>
-                  <div className="flex flex-col justify-start items-center gap-6">
-                    <Link href="/solutions" className="font-medium text-2xl">
-                      Solutions
-                    </Link>
-                    <Separator width={140} />
-                    {/* TODO change this depending on route */}
-                    <p className="text-sm font-normal">The use of calloc</p>
-                    <p className="text-sm font-normal">The use of malloc</p>
+                    <SidebarItems routeHistory={routeHistory} />
                   </div>
                 </div>
-              </div>
-            </div>
+              )}
+            </>
           )}
-          <div className="p-8 pt-28 lg:p-36 w-full h-full">{children}</div>
+          <div className="p-8 pt-28 2xl:p-36 w-full h-full">{children}</div>
         </div>
       </body>
     </html>

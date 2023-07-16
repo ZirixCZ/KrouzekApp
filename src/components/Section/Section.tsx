@@ -7,7 +7,7 @@ interface SectionProps {
 
 const Section = ({ title, description }: SectionProps) => {
   return (
-    <div className="w-fit h-full flex flex-row justify-start overflow-x-visible">
+    <div className="w-fit h-fit flex flex-row justify-start overflow-x-visible">
       <div className="flex flex-col gap-5">
         <div className="flex w-full h-full flex-1">
           <h2 className="text-2xl font-bold">{title}</h2>

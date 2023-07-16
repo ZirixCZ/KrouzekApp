@@ -3,6 +3,7 @@ import { SubmissionInterface } from "@/types/solutions";
 const SolutionTable = (props: {
   rows: SubmissionInterface[];
   handleOpen: () => void;
+  isDesktop: boolean;
 }) => {
   return (
     <div className="w-full h-full bg-table-background rounded-lg mb-14">
@@ -23,8 +24,15 @@ const SolutionTable = (props: {
                   {item.date}
                 </td>
                 <td className="table-cell w-1/4 text-sm font-normal px-4">
-                  <a onClick={props.handleOpen} className="cursor-pointer">
-                    <u>Open</u>
+                  <a
+                    onClick={
+                      props.isDesktop
+                        ? props.handleOpen
+                        : () => alert("download")
+                    }
+                    className="cursor-pointer"
+                  >
+                    <u>{props.isDesktop ? "Open" : "Download"}</u>
                   </a>
                 </td>
               </tr>

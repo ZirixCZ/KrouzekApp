@@ -4,6 +4,7 @@ import SolutionTable from "./SolutionTable";
 interface SolutionProps {
   section: SolutionInterface;
   handleOpen: () => void;
+  isDesktop: boolean;
 }
 const Solution = (props: SolutionProps) => {
   return (
@@ -17,6 +18,7 @@ const Solution = (props: SolutionProps) => {
               <SolutionTable
                 rows={section.submissions}
                 handleOpen={props.handleOpen}
+                isDesktop={props.isDesktop}
               />
             </div>
           </div>
