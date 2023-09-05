@@ -1,31 +1,49 @@
 "use client";
 
-import { useEffect, useState, useRef, useLayoutEffect } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Input from "@/components/Input";
 import { register } from "@/firebase/auth";
 import Button from "@/components/Button";
+import { getValidCodesFromFirestore } from "@/firebase/firestore";
 
 const Solutions = () => {
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  // TODO check code against firebase
   const [code, setCode] = useState<string | null>(null);
-
+  const [codeValid, setCodeValid] = useState<boolean>(false);
+  const searchParams = useSearchParams();
   const router = useRouter();
 
-  useLayoutEffect(() => {
-    setCode(sessionStorage.getItem("code") ?? "");
-
-    if (!code) {
-      router.push("/auth");
-    }
+  useEffect(() => {
+    setCode(searchParams.get("code") ?? "");
   }, []);
+
+  const handleCodeValidation = async (code: string) => {
+    if (!code) router.push(`/auth`);
+
+    const codes = await getValidCodesFromFirestore();
+
+    if (!codes.some((c: { code: string }) => c.code === code)) {
+      router.push(`/auth`);
+    }
+
+    sessionStorage.setItem("code", code);
+    setCodeValid(true);
+  };
+
+  useEffect(() => {
+    if (!code) return;
+
+    handleCodeValidation(code);
+  }, [code]);
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email || !password || !code) return;
+    if (!email || !password || !code || !codeValid) return;
 
     try {
       const userCredential = await register(email, password);
