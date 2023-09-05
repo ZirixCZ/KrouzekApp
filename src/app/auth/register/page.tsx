@@ -8,6 +8,7 @@ import Input from "@/components/Input";
 import { register } from "@/firebase/auth";
 import Button from "@/components/Button";
 import { getValidCodesFromFirestore } from "@/firebase/firestore";
+import { createUser } from "@/firebase/firestore";
 
 const Solutions = () => {
   const [error, setError] = useState<string | null>(null);
@@ -31,8 +32,8 @@ const Solutions = () => {
       router.push(`/auth`);
     }
 
-    sessionStorage.setItem("code", code);
     setCodeValid(true);
+    sessionStorage.setItem("code", code);
   };
 
   useEffect(() => {
@@ -47,7 +48,10 @@ const Solutions = () => {
 
     try {
       const userCredential = await register(email, password);
-      console.log(userCredential);
+      if (userCredential) {
+        await createUser();
+        router.push("/topics");
+      }
     } catch (error) {
       setError(error as string);
     }

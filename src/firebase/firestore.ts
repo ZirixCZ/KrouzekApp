@@ -1,5 +1,15 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  updateDoc,
+  query,
+  setDoc,
+  where,
+  doc,
+} from "firebase/firestore";
 import firebaseApp from "./config";
+import { auth } from "./auth";
 
 const db = getFirestore(firebaseApp);
 
@@ -21,5 +31,20 @@ export async function getValidCodesFromFirestore() {
     throw error;
   }
 }
+
+export const createUser = async () => {
+  const user = auth.currentUser;
+  if (user) {
+    const usersCollection = collection(db, "users");
+    const userUid = user.uid;
+
+    // Use the user's UID as the document name (also known as the document ID)
+    const userDocumentRef = doc(usersCollection, userUid);
+    const setDocument = setDoc(userDocumentRef, {
+      name: "John Doe",
+      email: user.email,
+    });
+  }
+};
 
 export default db;

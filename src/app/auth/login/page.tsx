@@ -17,18 +17,12 @@ const Solutions = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const toggleOpen = () => {
-    console.log("toggle");
-    setIsOpen(!isOpen);
-  };
-
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email || !password) return;
 
     try {
       const userCredential = await login(email, password);
-      console.log(userCredential);
     } catch (error) {
       setError(error as string);
     }

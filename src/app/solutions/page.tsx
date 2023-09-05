@@ -12,7 +12,6 @@ const Solutions = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
-    console.log("toggle");
     setIsOpen(!isOpen);
   };
 
