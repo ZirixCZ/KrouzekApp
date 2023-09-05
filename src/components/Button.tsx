@@ -1,5 +1,5 @@
 interface ButtonProps {
-  handleClick: () => void;
+  handleClick: (e?: any) => void;
   children: React.ReactNode;
 }
 

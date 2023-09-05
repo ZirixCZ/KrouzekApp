@@ -3,12 +3,13 @@ import React, { Dispatch, SetStateAction } from "react";
 interface InputProps {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
+  title?: string;
 }
 
-const Input = ({ handleChange, value }: InputProps) => {
+const Input = ({ handleChange, value, title }: InputProps) => {
   return (
     <div className="flex flex-col">
-      <p className="text-white text-sm font-semibold pb-2">CODE</p>
+      <p className="text-white text-sm font-semibold pb-2">{title ?? "CODE"}</p>
       <input
         onChange={handleChange}
         value={value}

@@ -1,9 +1,11 @@
 "use client";
 
+import * as React from "react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
+import firebaseApp from "@/firebase/config";
 import Image from "next/image";
 
 const Auth = () => {
@@ -14,11 +16,13 @@ const Auth = () => {
     setCode(e.target.value.toUpperCase());
   };
 
+  React.useEffect(() => {}, []);
+
   const handleButtonClick = () => {
     // TODO: check if code is valid against firebase
     if (code) {
       sessionStorage.setItem("code", code);
-      router.push(`topics`);
+      router.push(`auth/register`);
     }
   };
 
@@ -34,6 +38,7 @@ const Auth = () => {
           </div>
         )}
       </div>
+      <a href="/auth/login">Login</a>
     </div>
   );
 };

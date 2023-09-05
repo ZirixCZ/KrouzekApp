@@ -2,6 +2,7 @@
 
 import "./globals.css";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Metadata } from "next";
@@ -10,6 +11,7 @@ import Separator from "@/components/Separator";
 import parseURL from "@/utils/parseURL";
 import Hambuger from "@/components/Hamburger";
 import SidebarItems from "@/components/SidebarItems";
+import auth from "@/firebase/auth";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -23,7 +25,20 @@ export default function RootLayout({
   >();
   const [hambugerOpen, setHambugerOpen] = useState(false);
   const pathname = usePathname();
-  const showSidebar = pathname !== "/auth" && pathname !== "/";
+  const router = useRouter();
+  const showSidebar =
+    pathname !== "/auth" &&
+    pathname !== "/auth/register" &&
+    pathname !== "/auth/login" &&
+    pathname !== "/";
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (!user) {
+        if (showSidebar) router.push("/auth/login");
+      }
+    });
+  }, []);
 
   useEffect(() => {
     setHambugerOpen(false);
