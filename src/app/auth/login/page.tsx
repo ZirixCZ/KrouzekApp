@@ -1,18 +1,11 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import Input from "@/components/Input";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { arta } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import Solution from "../../../components/Solution";
-import { SolutionInterface } from "@/types/solutions";
-import { solutionData } from "../../../constants/solutionData";
-import useMediaQuery from "@/hooks/useMediaQuery";
 import { login } from "@/firebase/auth";
 import Button from "@/components/Button";
 
 const Solutions = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -22,7 +15,7 @@ const Solutions = () => {
     if (!email || !password) return;
 
     try {
-      const userCredential = await login(email, password);
+      await login(email, password);
     } catch (error) {
       setError(error as string);
     }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const SvgComponent = (props: any) => (
+const SvgComponent = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className="h-10 w-10 cursor-pointer"

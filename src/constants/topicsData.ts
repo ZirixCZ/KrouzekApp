@@ -1,7 +1,3 @@
-import { ReactElement } from "react";
-import Arrow from "@/components/Arrow";
-import Edit from "@/components/Edit";
-import Delete from "@/components/Delete";
 
 export const topicData = {
   title: "Memory allocation",

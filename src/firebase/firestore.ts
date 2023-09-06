@@ -2,10 +2,7 @@ import {
   getFirestore,
   collection,
   getDocs,
-  updateDoc,
-  query,
   setDoc,
-  where,
   doc,
 } from "firebase/firestore";
 import firebaseApp from "./config";

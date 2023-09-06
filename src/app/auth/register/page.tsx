@@ -29,7 +29,6 @@ const Solutions = () => {
 
   const handleCodeValidation = async (code: string) => {
     if (!code) router.push(`/auth`);
-    let name, surname;
     const codes = await getValidCodesFromFirestore();
 
     if (

@@ -3,11 +3,8 @@
 import "./globals.css";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import Separator from "@/components/Separator";
 import parseURL from "@/utils/parseURL";
 import Hambuger from "@/components/Hamburger";
 import SidebarItems from "@/components/SidebarItems";
