@@ -5,7 +5,7 @@ import Input from "@/components/Input";
 import { login } from "@/firebase/auth";
 import Button from "@/components/Button";
 
-const Solutions = () => {
+const Login = () => {
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -47,4 +47,4 @@ const Solutions = () => {
   );
 };
 
-export default Solutions;
+export default Login;

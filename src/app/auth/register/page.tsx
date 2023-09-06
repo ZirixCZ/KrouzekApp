@@ -12,7 +12,7 @@ import { createUser } from "@/firebase/firestore";
 import { initStorage } from "@/firebase/storage";
 import { CodeInterface } from "@/types/code";
 
-const Solutions = () => {
+const Register = () => {
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -99,4 +99,4 @@ const Solutions = () => {
   );
 };
 
-export default Solutions;
+export default Register;

@@ -10,6 +10,14 @@ const SidebarItems = ({ routeHistory }: SidebarItemsProps) => {
     <div className="sticky">
       <div className="w-full h-full flex flex-col justify-start items-center gap-24">
         <div className="flex flex-col justify-start items-center gap-6">
+          <Link href="/storage/general">
+            <p className="font-medium text-2xl">Storage</p>
+          </Link>
+          <Separator width={140} />
+          <Link href="/storage/general" className="text-sm font-normal">
+            general
+          </Link>
+        
           <Link href="/topics">
             <p className="font-medium text-2xl">Topics</p>
           </Link>
