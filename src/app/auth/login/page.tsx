@@ -40,13 +40,14 @@ const Solutions = () => {
           handleChange={(e) => setPassword(e.target.value)}
           value={password}
           title="PASSWORD"
+          obscure
         />
         <div className="flex w-full justify-start">
           <a href="/auth">Register</a>
           <p>{error}</p>
         </div>
         <div className="h-11 w-full mt-4">
-          <Button handleClick={onSubmit}>Submit</Button>
+          <Button handleClick={onSubmit} isSubmit>Submit</Button>
         </div>
       </form>
     </div>

@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import firebaseApp from "@/firebase/config";
 import Image from "next/image";
 
 const Auth = () => {
@@ -19,7 +18,8 @@ const Auth = () => {
 
   React.useEffect(() => {}, []);
 
-  const handleButtonClick = async () => {
+  const handleButtonClick = async (e: any) => {
+    e.preventDefault()
     if (code) {
       router.push(`/auth/register?code=${code}`);
     }
@@ -28,11 +28,11 @@ const Auth = () => {
   return (
     <div className="flex w-full h-full justify-center items-center">
       <div className="flex flex-col">
-        <div className="flex items-end justify-end gap-x-4">
+        <form className="flex items-end justify-end gap-x-4" onSubmit={handleButtonClick}>
           <Input handleChange={handleSetCode} value={code} />
           {code && (
             <div className="h-11 w-16 absolute">
-              <Button handleClick={handleButtonClick}>
+              <Button isSubmit>
                 <Image
                   src="/img/arrow.svg"
                   width={20}
@@ -42,7 +42,7 @@ const Auth = () => {
               </Button>
             </div>
           )}
-        </div>
+        </form>
         <a href="/auth/login">Login</a>
       </div>
     </div>

@@ -16,6 +16,7 @@ const Solutions = () => {
   const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>(""); 
   const [code, setCode] = useState<string | null>(null);
   const [codeValid, setCodeValid] = useState<boolean>(false);
   const [codeData, setCodeData] = useState<CodeInterface | undefined>(); // TODO: type this [
@@ -80,17 +81,19 @@ const Solutions = () => {
           handleChange={(e) => setPassword(e.target.value)}
           value={password}
           title="PASSWORD"
+          obscure
         />
         <Input
-          handleChange={(e) => setPassword(e.target.value)}
-          value={password}
+          handleChange={(e) => setConfirmPassword(e.target.value)}
+          value={confirmPassword}
           title="CONFIRM PASSWORD"
+          obscure
         />
         <div className="flex w-full justify-start">
           <p>{error}</p>
         </div>
         <div className="h-11 w-full mt-4">
-          <Button handleClick={onSubmit}>Submit</Button>
+          <Button handleClick={onSubmit} isSubmit>Submit</Button>
         </div>
       </form>
     </div>
