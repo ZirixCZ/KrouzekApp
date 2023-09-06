@@ -38,7 +38,6 @@ export const createUser = async () => {
     const usersCollection = collection(db, "users");
     const userUid = user.uid;
 
-    // Use the user's UID as the document name (also known as the document ID)
     const userDocumentRef = doc(usersCollection, userUid);
     const setDocument = setDoc(userDocumentRef, {
       name: "John Doe",

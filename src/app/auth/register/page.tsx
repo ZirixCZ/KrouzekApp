@@ -9,6 +9,7 @@ import { register } from "@/firebase/auth";
 import Button from "@/components/Button";
 import { getValidCodesFromFirestore } from "@/firebase/firestore";
 import { createUser } from "@/firebase/firestore";
+import { initStorage } from "@/firebase/storage";
 
 const Solutions = () => {
   const [error, setError] = useState<string | null>(null);
@@ -50,6 +51,7 @@ const Solutions = () => {
       const userCredential = await register(email, password);
       if (userCredential) {
         await createUser();
+        await initStorage();
         router.push("/topics");
       }
     } catch (error) {
