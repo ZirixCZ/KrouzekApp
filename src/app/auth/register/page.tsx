@@ -10,6 +10,7 @@ import Button from "@/components/Button";
 import { getValidCodesFromFirestore } from "@/firebase/firestore";
 import { createUser } from "@/firebase/firestore";
 import { initStorage } from "@/firebase/storage";
+import { CodeInterface } from "@/types/code";
 
 const Solutions = () => {
   const [error, setError] = useState<string | null>(null);
@@ -17,6 +18,7 @@ const Solutions = () => {
   const [password, setPassword] = useState<string>("");
   const [code, setCode] = useState<string | null>(null);
   const [codeValid, setCodeValid] = useState<boolean>(false);
+  const [codeData, setCodeData] = useState<CodeInterface | undefined>(); // TODO: type this [
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -26,15 +28,22 @@ const Solutions = () => {
 
   const handleCodeValidation = async (code: string) => {
     if (!code) router.push(`/auth`);
-
+    let name, surname;
     const codes = await getValidCodesFromFirestore();
 
-    if (!codes.some((c: { code: string }) => c.code === code)) {
+    if (
+      !codes.some((c: { code: string, name: string, surname: string }) => {
+        if (c.code === code) {
+          setCodeData(c)
+          return true
+        }
+        return false
+      })
+    ) {
       router.push(`/auth`);
     }
 
     setCodeValid(true);
-    sessionStorage.setItem("code", code);
   };
 
   useEffect(() => {
@@ -49,8 +58,8 @@ const Solutions = () => {
 
     try {
       const userCredential = await register(email, password);
-      if (userCredential) {
-        await createUser();
+      if (userCredential && codeData) {
+        await createUser(codeData);
         await initStorage();
         router.push("/topics");
       }

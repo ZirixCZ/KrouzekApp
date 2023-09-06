@@ -13,3 +13,4 @@ export interface SubmissionInterface {
   date: string;
   path: string;
 }
+

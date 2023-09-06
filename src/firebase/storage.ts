@@ -1,7 +1,6 @@
 import firebaseApp from "./config";
 
 import { getStorage, ref, uploadBytes } from "firebase/storage";
-import { child } from "firebase/database";
 import { auth } from "./auth";
 const storage = getStorage(firebaseApp);
 

@@ -10,18 +10,21 @@ import {
 } from "firebase/firestore";
 import firebaseApp from "./config";
 import { auth } from "./auth";
+import { CodeInterface } from "../types/code";
 
 const db = getFirestore(firebaseApp);
 
 export async function getValidCodesFromFirestore() {
   try {
-    const data: any = [];
+    const data: CodeInterface[] = [];
     const querySnapshot = await getDocs(collection(db, "codes"));
 
     querySnapshot.forEach((doc) => {
+      const docData = doc.data();
       data.push({
-        id: doc.id,
-        ...doc.data(),
+        code: docData.code,
+        name: docData.name,
+        surname: docData.surname,
       });
     });
 
@@ -32,15 +35,16 @@ export async function getValidCodesFromFirestore() {
   }
 }
 
-export const createUser = async () => {
+export const createUser = async (code: CodeInterface) => {
   const user = auth.currentUser;
   if (user) {
     const usersCollection = collection(db, "users");
     const userUid = user.uid;
 
     const userDocumentRef = doc(usersCollection, userUid);
-    const setDocument = setDoc(userDocumentRef, {
-      name: "John Doe",
+    setDoc(userDocumentRef, {
+      name: code.name,
+      surname: code.surname,
       email: user.email,
     });
   }
